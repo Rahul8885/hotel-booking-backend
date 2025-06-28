@@ -8,13 +8,8 @@ const sequelize = new Sequelize({
   database: process.env.DB_NAME || 'hotel_booking',
   username: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || 'password',
-  logging: process.env.NODE_ENV === 'development' ? console.log : false,
-   dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    }
-  },
+  logging: true,
+  // No SSL for testing
   pool: {
     max: 10,
     min: 0,
@@ -22,5 +17,4 @@ const sequelize = new Sequelize({
     idle: 10000
   }
 });
-
 module.exports = { sequelize };
