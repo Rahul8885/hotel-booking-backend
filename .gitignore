@@ -10,4 +10,5 @@ build/
 coverage/
 .nyc_output/
 rahul-ec2.pem
+migrations/
 
