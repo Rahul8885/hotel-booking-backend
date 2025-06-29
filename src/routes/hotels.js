@@ -11,7 +11,7 @@ const router = express.Router();
 let isDataInitialized = false;
 
 const initializeMockData = async () => {
-  if (!isDataInitialized) {
+  // if (!isDataInitialized) {
     try {
       const hotelCount = await Hotel.count();
       if (hotelCount === 0) {
@@ -22,7 +22,7 @@ const initializeMockData = async () => {
     } catch (error) {
       console.error('Error initializing mock data:', error);
     }
-  }
+  // }
 };
 
 // Get all hotels with pagination and filtering
