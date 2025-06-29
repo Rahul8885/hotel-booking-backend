@@ -109,7 +109,7 @@ router.get('/user', authenticateToken, async (req, res) => {
       ],
       limit: parseInt(limit),
       offset,
-      order: [['createdAt', 'DESC']]
+      order: [['id', 'DESC']]
     });
 
     res.json({
