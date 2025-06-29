@@ -12,11 +12,12 @@ let isDataInitialized = false;
 
 const initializeMockData = async () => {
   // if (!isDataInitialized) {
+      await Hotel.bulkCreate(mockHotels);
     try {
       const hotelCount = await Hotel.count();
       console.log(`Current hotel count: ${hotelCount}`);
       if (hotelCount === 0) {
-        await Hotel.bulkCreate(mockHotels);
+    
         console.log('Mock hotel data initialized');
       }
       isDataInitialized = true;
