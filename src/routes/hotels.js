@@ -14,6 +14,7 @@ const initializeMockData = async () => {
   // if (!isDataInitialized) {
     try {
       const hotelCount = await Hotel.count();
+      console.log(`Current hotel count: ${hotelCount}`);
       if (hotelCount === 0) {
         await Hotel.bulkCreate(mockHotels);
         console.log('Mock hotel data initialized');
@@ -129,7 +130,7 @@ router.get('/:id', async (req, res) => {
 router.get('/search/advanced', async (req, res) => {
   try {
     await initializeMockData();
-
+  
     const {
       city,
       checkIn,
