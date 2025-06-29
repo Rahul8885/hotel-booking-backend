@@ -33,7 +33,8 @@ const bookingSchema = Joi.object({
   checkInDate: Joi.date().required(),
   checkOutDate: Joi.date().greater(Joi.ref('checkInDate')).required(),
   guests: Joi.number().integer().min(1).required(),
-  guestDetails: Joi.object().optional()
+  guestDetails: Joi.object().optional(),
+  totalAmount: Joi.number().precision(2).required()
 });
 
 module.exports = {

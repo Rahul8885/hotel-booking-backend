@@ -12,7 +12,7 @@ const router = express.Router();
 // Create new booking
 router.post('/', authenticateToken, validateRequest(bookingSchema), async (req, res) => {
   try {
-    const { hotelId, checkInDate, checkOutDate, guests, guestDetails } = req.body;
+    const { hotelId, checkInDate, checkOutDate, guests, guestDetails, totalAmount } = req.body;
     const userId = req.user.id;
 
     // Check if hotel exists
@@ -27,8 +27,8 @@ router.post('/', authenticateToken, validateRequest(bookingSchema), async (req, 
     // Calculate total amount
     const checkIn = new Date(checkInDate);
     const checkOut = new Date(checkOutDate);
-    const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
-    const totalAmount = nights * hotel.pricePerNight;
+    // const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+  
 
     // Create booking
     const booking = await Booking.create({
