@@ -11,20 +11,18 @@ const router = express.Router();
 let isDataInitialized = false;
 
 const initializeMockData = async () => {
-  // if (!isDataInitialized) {
-      await Hotel.bulkCreate(mockHotels);
+  if (!isDataInitialized) {
     try {
       const hotelCount = await Hotel.count();
-      console.log(`Current hotel count: ${hotelCount}`);
       if (hotelCount === 0) {
-    
+        await Hotel.bulkCreate(mockHotels);
         console.log('Mock hotel data initialized');
       }
       isDataInitialized = true;
     } catch (error) {
       console.error('Error initializing mock data:', error);
     }
-  // }
+  }
 };
 
 // Get all hotels with pagination and filtering
@@ -126,12 +124,21 @@ router.get('/:id', async (req, res) => {
     });
   }
 });
-
+router.post('/reseeddemo', async (req, res) => {
+  try {
+    await Hotel.destroy({ where: {} }); // Clear all
+    await Hotel.bulkCreate(mockHotels);
+    res.json({ success: true, message: 'Mock hotels reseeded' });
+  } catch (err) {
+    console.error('Reseed error:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
 // Search hotels with advanced filters
 router.get('/search/advanced', async (req, res) => {
   try {
     await initializeMockData();
-  
+
     const {
       city,
       checkIn,
