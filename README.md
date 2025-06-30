@@ -14,7 +14,7 @@ A RESTful API for a hotel booking mobile application built with Node.js, Express
 
 ## 📋 Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js (v18 or higher)
 - PostgreSQL
 - AWS Account (EC2 & RDS)
 - Git
