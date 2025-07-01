@@ -60,16 +60,9 @@ A RESTful API for a hotel booking mobile application built with Node.js, Express
 
    ```
 
-4. **Database Setup**
-   ```bash
-   # Run migrations
-   npm run migrate
-   
-   # Seed database (optional)
-   npm run seed
-   ```
 
-5. **Start the server**
+
+4. **Start the server**
    ```bash
    # Development
    npm run dev
